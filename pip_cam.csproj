@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>pip_cam</AssemblyName>
+    <RootNamespace>pip_cam</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+
+    <!-- Override on the command line if the game or the mods folder move:
+         dotnet build -p:ParkitectManaged=... -p:ModOutputDir=... -->
+    <ParkitectManaged Condition="'$(ParkitectManaged)' == ''">D:\games\steam\steamapps\common\Parkitect\Parkitect_Data\Managed</ParkitectManaged>
+    <ModOutputDir Condition="'$(ModOutputDir)' == ''">$([System.Environment]::GetFolderPath(SpecialFolder.MyDocuments))\Parkitect\Mods\pip_cam</ModOutputDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="src\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48" Version="1.0.3" PrivateAssets="all" />
+    <!-- The game's assemblies target netstandard 2.0. -->
+    <Reference Include="netstandard" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Parkitect"><HintPath>$(ParkitectManaged)\Parkitect.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="ThirdParty"><HintPath>$(ParkitectManaged)\ThirdParty.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="ThirdParty.ScreenSpaceCloudShadow"><HintPath>$(ParkitectManaged)\ThirdParty.ScreenSpaceCloudShadow.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(ParkitectManaged)\UnityEngine.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(ParkitectManaged)\UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.UI"><HintPath>$(ParkitectManaged)\UnityEngine.UI.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.UIModule"><HintPath>$(ParkitectManaged)\UnityEngine.UIModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.PhysicsModule"><HintPath>$(ParkitectManaged)\UnityEngine.PhysicsModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.IMGUIModule"><HintPath>$(ParkitectManaged)\UnityEngine.IMGUIModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.InputLegacyModule"><HintPath>$(ParkitectManaged)\UnityEngine.InputLegacyModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.TextRenderingModule"><HintPath>$(ParkitectManaged)\UnityEngine.TextRenderingModule.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+
+  <!-- The game loads a single DLL per Mods/<folder> and prefers the one named after the folder. -->
+  <Target Name="CopyToModsFolder" AfterTargets="Build">
+    <MakeDir Directories="$(ModOutputDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModOutputDir)" SkipUnchangedFiles="true" />
+    <!-- Sharing to the Workshop uploads the mod folder, and the game shows this picture on the mod's page. -->
+    <Copy SourceFiles="workshop\preview.png" DestinationFolder="$(ModOutputDir)" SkipUnchangedFiles="true" Condition="Exists('workshop\preview.png')" />
+    <Message Importance="high" Text="pip_cam -> $(ModOutputDir)" />
+  </Target>
+
+</Project>

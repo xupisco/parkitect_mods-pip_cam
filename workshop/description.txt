@@ -1,0 +1,37 @@
+[h1]PiP Cam[/h1]
+Keep an eye on more than one place at once: small live views of your park in windows, fixed on a spot or following a guest, a ride or a shop wherever it goes.
+
+[h2]How to use it[/h2]
+[list]
+[*]Press [b]F4[/b] to open a view. The key can be changed in the game's controls settings, under PiP Cam. With the window of a guest, an employee, a ride or a shop in front, the view follows them, and their name shows in the title. Otherwise it shows the spot in the middle of the screen.
+[*]Views look at the park from the same angle as the game's camera, facing the way your camera faces.
+[*]Open several views at once, and move or resize them like any other window.
+[/list]
+
+[h2]In a view[/h2]
+[list]
+[*][b]Click[/b] to take the main camera to that spot.
+[*]Drag with the [b]middle mouse button[/b] to move the view. A view that was following someone stays where you leave it.
+[*]Drag with the [b]right mouse button[/b] to turn it.
+[*]The [b]mouse wheel[/b] zooms in and out.
+[*]Click the [b]title[/b] of a view that follows someone or something to open their window.
+[/list]
+
+[h2]Settings[/h2]
+[list]
+[*][b]Picture resolution[/b]: how sharp the views are.
+[*][b]Frames per second[/b]: how often each view draws a new picture.
+[*][b]Most views open at once[/b]: up to 6.
+[/list]
+Each open view draws the park again, so a lower resolution or fewer frames per second keep it light.
+
+[h2]Good to know[/h2]
+[list]
+[*]Guests in a view move with their full animation, even when the main camera is far away. In a very wide view, past a couple of hundred guests, the rest are drawn the simpler way the game draws people far away.
+[*]Views show the park without the game's color filter, bloom and cloud shadows.
+[*]With the Perspective Camera mod, dragging with the middle mouse button in a view may also turn the main camera.
+[*]The mod's texts are in English and Brazilian Portuguese, following the game's language.
+[*]The views are only on your screen, so other players in a multiplayer game don't need the mod.
+[/list]
+
+Your saves don't depend on this mod, so you can remove it at any time.
