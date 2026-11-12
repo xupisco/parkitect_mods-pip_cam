@@ -2,6 +2,8 @@
 
 A [Parkitect](https://www.themeparkitect.com/) mod to keep an eye on more than one place at once: small live views of your park in windows, fixed on a spot or following a guest, a ride or a shop wherever it goes.
 
+[Steam Workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=3835355172)
+
 ![PiP Cam](workshop/preview.png)
 
 ## How to use it
